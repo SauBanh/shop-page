@@ -1,4 +1,4 @@
-extends layouts/main-layout.pug
+extends ../layouts/main-layout.pug
 
 block style
     link(rel="stylesheet", href="/css/main.css")
@@ -13,11 +13,13 @@ block content
                             header.card__header
                                 h1.product__title #{product.title}
                             .card__image
-                                img(src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSehNExO7Os6_qM7ZpPmqGhgLK84E6pnPvaPQ&usqp=CAU", alt="A book")
+                                img(src=`${product.imgUrl}`, alt=`Book ${product.title}`)
                             .card__content
-                                h2.product__price $19.99
-                                p.prduct__description The Binding meets The Handmaid’s Tale – Discovering a book of dark and ancient power, a convent librarian must defend it with her life. Perfect for fans of dark academia and historical feminist fiction.
+                                h2.product__price $#{product.price}
+                                p.prduct__description #{product.description}
                             .card__actions
-                                button.btn Add to Cart
+                                a.btn(href="/admin/edit-product") Edit
+                                form(action="/admin/delete-product", method="POST") 
+                                    button.btn(type="submit") Delete
             else
                 h1 No Product
