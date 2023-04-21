@@ -1,0 +1,7 @@
+# bỏ qua thư mục node_modules
+node_modules/
+
+# bỏ qua các tệp log của Node.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
