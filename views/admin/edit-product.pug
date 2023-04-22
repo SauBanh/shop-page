@@ -5,4 +5,18 @@ block style
     link(rel="stylesheet", href="/css/form.css")
 
 block content
-    h1 Edit Product
+        main
+            form.product-form(action="/admin/add-product", method="POST")
+                .form-control
+                    label(for="title") Title
+                    input#title(type="text", name="title", required, placeholder="title")
+                .form-control
+                    label(for="imageUrl") Image Url
+                    input#imageUrl(type="url", name="imageUrl", required, placeholder="imageUrl")
+                .form-control
+                    label(for="price") Price
+                    input#price(type="number", name="price", required, placeholder="price" step="0.01")
+                .form-control
+                    label(for="description") Description
+                    textarea#description(type="text", name="description", required, placeholder="description", rows="5")
+                button.btn(type="submit") Add product
