@@ -6,17 +6,20 @@ block style
 
 block content
         main
-            form.product-form(action="/admin/add-product", method="POST")
+            form.product-form(action=editing ? 'edit-product' : 'add-product', method="POST")
                 .form-control
                     label(for="title") Title
-                    input#title(type="text", name="title", required, placeholder="title")
+                    input#title(type="text", name="title", required, placeholder="title" value=editing ? product.title : undefined)
                 .form-control
                     label(for="imageUrl") Image Url
-                    input#imageUrl(type="url", name="imageUrl", required, placeholder="imageUrl")
+                    input#imageUrl(type="url", name="imageUrl", required, placeholder="imageUrl" value=editing ? product.imgUrl : undefined)
                 .form-control
                     label(for="price") Price
-                    input#price(type="number", name="price", required, placeholder="price" step="0.01")
+                    input#price(type="number", name="price", required, placeholder="price" step="0.01" value=editing ? product.price : undefined)
                 .form-control
                     label(for="description") Description
-                    textarea#description(type="text", name="description", required, placeholder="description", rows="5")
-                button.btn(type="submit") Add product
+                    textarea#description(type="text", name="description", required, placeholder="description", rows="5") #{editing ? product.description : undefined}
+                if editing
+                    button.btn(type="submit") Edit Product
+                else
+                    button.btn(type="submit") Add Product
