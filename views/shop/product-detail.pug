@@ -8,7 +8,7 @@ block content
     main.centered
         h1 #{product.title}
         div
-            img(src=`${product.imgUrl}`, alt=`Book ${product.title}`)
+            img(src=`${product.imageUrl}`, alt=`Book ${product.title}`)
         h2 $#{product.price}
         p #{product.description}
         form(action="/cart", method="POST")
