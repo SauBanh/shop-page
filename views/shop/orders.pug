@@ -5,4 +5,16 @@ block style
     link(rel="stylesheet", href="/css/product.css")
 
 block content
-    h1 Nothing there!
+    main
+        if orders.length > 0
+            ul 
+                each order in orders
+                    li 
+                        h3 Title: #{order.id}
+                        ul
+                            each product in order.products
+                                li 
+                                    h1 title: #{product.title} and #{product.orderItem.quantity}                                    
+
+        else
+            h1 Không có sản phẩm nào trong giỏ hàng
