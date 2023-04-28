@@ -62,8 +62,8 @@ sequelize
     // .sync({ force: true }) // xóa các bản cũ và ghi đè các thông tin lên
     .sync()
     .then((result) => {
-        return User.findByPk(1);
         // console.log(result);
+        return User.findByPk(1);
     })
     .then((user) => {
         if (!user) {
