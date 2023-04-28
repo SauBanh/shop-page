@@ -9,13 +9,15 @@ block content
             ul 
                 each product in prods
                     li 
-                        h3 Title: #{product.productData.title}
-                        img(src=`${product.productData.imgUrl}`)
-                        h3 Description: #{product.productData.description}
-                        h3 Price: #{product.productData.price}
-                        h3 Quantity #{product.qty}
+                        h3 Title: #{product.title}
+                        img(src=`${product.imgUrl}`)
+                        h3 Description: #{product.description}
+                        h3 Price: #{product.price}
+                        h3 Quantity #{product.cartItem.quantity}
                         form(action="/cart-delete-item" method="POST") 
-                            input(type="hidden", name="productId", value=product.productData.id)
+                            input(type="hidden", name="productId", value=product.id)
                             button.btn(type="submit") Delete
+            form(action="/create-order", method="post")
+                button.btn(type="submit") Order now!
         else
             h1 Không có sản phẩm nào trong giỏ hàng
